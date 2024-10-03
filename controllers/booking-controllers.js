@@ -6,9 +6,11 @@
 // function greetings() {
 //     return 'hello world';
 // }
-import { booking } from "../models/booking-model.js";
+import {booking} from "../models/booking-model.js";
 
 export const getAllBookings = (req, res) => {
+    
+
     res.status(200).json('These are all bookings')
 }
 
@@ -17,15 +19,19 @@ export const getOneBooking = (req, res) => {
 }
 
 export const postAllBookings = async (req, res) => {
-    const newBooking = await new booking()
-
+    try {
+        const newBooking = await new booking()
     
-    console.log('request', req)
-
-    const bookings = await newBooking.save(req.body)
-
-
-    res.status(201).json('This is a post')
+        
+        // console.log('request', req)
+    
+        // const bookings = await newBooking.save(req.body)
+    
+    
+        res.status(201).json('This is a post')
+    } catch (error) {
+        next(error);
+    }
 }
 
 export const updateAllBookings = (req, res) => {
