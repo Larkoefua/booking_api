@@ -12,7 +12,7 @@ export const getAllBookings = async (req, res) => {
  try {
       const allBooking = await booking.find();
    
-       res.status(200).json(allBooking);
+       res.status(200).json('This is get bookings');
  } catch (error) {
     next(error);
  }
